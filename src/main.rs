@@ -26,6 +26,6 @@ async fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.namespace {
         Namespace::Orderbook(orderbook) => rain_cli_ob::cli::dispatch(orderbook).await,
-        Namespace::Meta(meta) => rain_cli_meta::cli::dispatch(meta).await,
+        Namespace::Meta(meta) => rain_cli_meta::cli::dispatch(meta),
     }
 }

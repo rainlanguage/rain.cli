@@ -21,5 +21,6 @@ pkgs.stdenv.mkDerivation {
   ]);
 
   shellHook = ''
+  export PATH="$PATH":~/.cargo/bin
   '';
 }

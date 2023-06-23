@@ -915,7 +915,7 @@ dependencies = [
 
 [[package]]
 name = "rain_cli"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "anyhow",
  "clap",
@@ -928,9 +928,9 @@ dependencies = [
 
 [[package]]
 name = "rain_cli_meta"
-version = "0.6.0"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4886358cef209a8abc59f3189bc5114b990b1746e7849a30e6fcb1f6f38b8c91"
+checksum = "124d3b018793e2b53f8d3c7eb5febcbc66c937aff62e61f0eab4b94170bb0b15"
 dependencies = [
  "anyhow",
  "ciborium",

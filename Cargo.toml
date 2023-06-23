@@ -1,6 +1,6 @@
 [package]
 name = "rain_cli"
-version = "0.6.0"
+version = "0.7.0"
 edition = "2021"
 license = "CAL-1.0"
 description = "Aggregated binary across all native Rain tooling."
@@ -14,7 +14,7 @@ rain_cli_ob = "0.0.4"
 tokio = { version = "1.28.0", features = ["full"] }
 tracing = "0.1.37"
 tracing-subscriber = "0.3.17"
-rain_cli_meta = "0.7.0"
+rain_cli_meta = "0.8.0"
 
 [[bin]]
 name = "rain"

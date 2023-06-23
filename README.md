@@ -32,6 +32,13 @@ You can also pin it to any git revision like
 nix shell github:rainprotocol/rain.cli/<revision> -c rain
 ```
 
+Alternatively you can install it to your profile and nix can manage it like any
+other binary.
+
+```
+nix profile install github:rainprotocol/rain.cli
+```
+
 ### Cargo
 
 Rain CLI is written in Rust so can be installed with `cargo` like any other Rust

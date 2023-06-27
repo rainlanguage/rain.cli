@@ -4,6 +4,8 @@ use clap::{Parser, Subcommand};
 use rain_cli_ob;
 use rain_cli_meta;
 
+/// Rain CLI.
+/// Base struct just wraps subcommands so that we can dispatch to dependencies.
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
@@ -11,6 +13,7 @@ struct Cli {
     namespace: Namespace,
 }
 
+/// Namespace represents each dependency, which is itself an entire CLI.
 #[derive(Subcommand)]
 enum Namespace {
     #[command(subcommand)]

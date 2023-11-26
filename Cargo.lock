@@ -967,7 +967,7 @@ dependencies = [
 [[package]]
 name = "rain_cli_subgraph"
 version = "0.0.1"
-source = "git+https://github.com/rainprotocol/rain.subgraph-cli.git?rev=16020c3fdb522478030d4b93419997dc65da5de0#16020c3fdb522478030d4b93419997dc65da5de0"
+source = "git+https://github.com/rainprotocol/rain.subgraph-cli.git?rev=fdfde6c6f608998c5ee2d6734430f32d49d1dda0#fdfde6c6f608998c5ee2d6734430f32d49d1dda0"
 dependencies = [
  "anyhow",
  "clap",

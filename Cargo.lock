@@ -609,6 +609,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "indoc"
+version = "2.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1e186cfbae8084e513daff4240b4797e342f988cecda4fb6c939150f96315fd8"
+
+[[package]]
 name = "ipnet"
 version = "2.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -967,10 +973,11 @@ dependencies = [
 [[package]]
 name = "rain_cli_subgraph"
 version = "0.0.1"
-source = "git+https://github.com/rainprotocol/rain.subgraph-cli.git?rev=adfba1a45fc1c13f118a30d0fc23143d393add1f#adfba1a45fc1c13f118a30d0fc23143d393add1f"
+source = "git+https://github.com/rainlanguage/rain.subgraph-cli.git?rev=d3aabe1811c642dc8d9890f127f0100f71d0ebbe#d3aabe1811c642dc8d9890f127f0100f71d0ebbe"
 dependencies = [
  "anyhow",
  "clap",
+ "indoc",
  "serde",
  "serde_yaml",
  "tokio",
@@ -1236,8 +1243,7 @@ dependencies = [
 [[package]]
 name = "serde_yaml"
 version = "0.9.27"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3cc7a1570e38322cfe4154732e5110f887ea57e22b76f4bfd32b5bdd3368666c"
+source = "git+https://github.com/thedavidmeister/serde-yaml.git?rev=f0d9ff48c450f16381eb09bc2fadf7dc0bf32143#f0d9ff48c450f16381eb09bc2fadf7dc0bf32143"
 dependencies = [
  "indexmap",
  "itoa",

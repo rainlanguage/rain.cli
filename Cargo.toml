@@ -15,7 +15,7 @@ tokio = { version = "1.28.0", features = ["full"] }
 tracing = "0.1.37"
 tracing-subscriber = "0.3.17"
 rain_cli_meta = "0.10.0"
-rain_cli_subgraph = { git = "https://github.com/rainprotocol/rain.subgraph-cli.git", rev = "d3aabe1811c642dc8d9890f127f0100f71d0ebbe" }
+rain_cli_subgraph = { git = "https://github.com/rainlanguage/rain.subgraph-cli.git", rev = "d3aabe1811c642dc8d9890f127f0100f71d0ebbe" }
 
 [[bin]]
 name = "rain"

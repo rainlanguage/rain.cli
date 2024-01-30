@@ -1,6 +1,7 @@
 use anyhow::Result;
 use clap::command;
 use clap::{Parser, Subcommand};
+use dotrain;
 use rain_cli_meta;
 use rain_cli_ob;
 use rain_cli_subgraph;
@@ -22,7 +23,7 @@ enum Namespace {
     #[command(subcommand)]
     Meta(rain_cli_meta::cli::Meta),
     #[command(subcommand)]
-    Subgraph(rain_cli_subgraph::cli::Subgraph),
+    DotRain(dotrain::cli::Dotrain),
 }
 
 #[tokio::main]
@@ -31,8 +32,8 @@ async fn main() -> Result<()> {
 
     let cli = Cli::parse();
     match cli.namespace {
-        Namespace::Orderbook(orderbook) => rain_cli_ob::cli::dispatch(orderbook).await,
+        Namespace::Orderbook(orderbook) => orderbook.execute().await,
         Namespace::Meta(meta) => rain_cli_meta::cli::dispatch(meta),
-        Namespace::Subgraph(subgraph) => rain_cli_subgraph::cli::dispatch(subgraph).await,
+        Namespace::DotRain(dotrain) => dotrain::cli::dispatch(dotrain).await,
     }
 }

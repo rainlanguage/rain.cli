@@ -1,37 +1,39 @@
 {
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    naersk.url = "github:nix-community/naersk";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    rainix.url = "github:rainprotocol/rainix";
   };
 
-  outputs = { self, flake-utils, naersk, nixpkgs }:
+  outputs = { self, flake-utils, rainix }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = (import nixpkgs) {
-          inherit system;
-        };
-
-        naersk' = pkgs.callPackage naersk {};
-
+        pkgs = rainix.pkgs.${system};
       in rec {
-        # For `nix build` & `nix run`:
-        defaultPackage = naersk'.buildPackage {
-          src = ./.;
-          nativeBuildInputs = with pkgs; [ pkg-config openssl gmp ] ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [
-            pkgs.darwin.apple_sdk.frameworks.Security
-            pkgs.darwin.apple_sdk.frameworks.SystemConfiguration
-          ]);
-        };
+        packages = {
+          rain = (pkgs.makeRustPlatform{
+            rustc = rainix.rust-toolchain.${system};
+            cargo = rainix.rust-toolchain.${system};
+          }).buildRustPackage {
+            src = ./.;
+            doCheck = false;
+            name = "rain";
+            cargoLock.lockFile = ./Cargo.lock;
+            # allows for git deps to be resolved without the need to specify their outputHash
+            cargoLock.allowBuiltinFetchGit = true;
+            buildPhase = ''
+              cargo build --release --bin rain
+            '';
+            installPhase = ''
+              mkdir -p $out/bin
+              cp target/release/rain $out/bin/
+            '';
+            nativeBuildInputs = rainix.rust-build-inputs.${system};
+          };
+        } // rainix.packages.${system};
 
-        # For `nix develop`:
-        devShell = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [ rustc cargo gmp iconv ] ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [
-            pkgs.darwin.apple_sdk.frameworks.Security
-            pkgs.darwin.apple_sdk.frameworks.CoreFoundation
-            pkgs.darwin.apple_sdk.frameworks.CoreServices
-          ]);
-        };
+        defaultPackage = packages.rain;
+
+        devShells = rainix.devShells.${system};
       }
     );
 }

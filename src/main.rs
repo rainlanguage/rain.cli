@@ -1,9 +1,6 @@
 use anyhow::Result;
 use clap::command;
 use clap::{Parser, Subcommand};
-use rain_cli_meta;
-use rain_cli_ob;
-use rain_cli_subgraph;
 
 /// Rain CLI.
 /// Base struct just wraps subcommands so that we can dispatch to dependencies.
@@ -22,7 +19,7 @@ enum Namespace {
     #[command(subcommand)]
     Meta(rain_cli_meta::cli::Meta),
     #[command(subcommand)]
-    Subgraph(rain_cli_subgraph::cli::Subgraph),
+    Dotrain(dotrain::cli::Dotrain),
 }
 
 #[tokio::main]
@@ -33,6 +30,6 @@ async fn main() -> Result<()> {
     match cli.namespace {
         Namespace::Orderbook(orderbook) => rain_cli_ob::cli::dispatch(orderbook).await,
         Namespace::Meta(meta) => rain_cli_meta::cli::dispatch(meta),
-        Namespace::Subgraph(subgraph) => rain_cli_subgraph::cli::dispatch(subgraph).await,
+        Namespace::Dotrain(dotrain) => dotrain::cli::dispatch(dotrain).await,
     }
 }

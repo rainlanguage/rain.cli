@@ -814,7 +814,7 @@ dependencies = [
 [[package]]
 name = "dotrain"
 version = "0.0.0"
-source = "git+https://github.com/rainlanguage/dotrain?rev=ad8493db3206958bcb821202777026c735197ae4#ad8493db3206958bcb821202777026c735197ae4"
+source = "git+https://github.com/rainlanguage/dotrain?rev=19f409046c15a62c085677924de3c93ff7939035#19f409046c15a62c085677924de3c93ff7939035"
 dependencies = [
  "alloy-json-abi",
  "alloy-primitives 0.5.4",

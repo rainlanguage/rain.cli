@@ -22,7 +22,7 @@ enum Namespace {
     #[command(subcommand)]
     Meta(rain_cli_meta::cli::Meta),
     #[command(subcommand)]
-    Dotrain(dotrain::cli::RainComposerCli),
+    Dotrain(dotrain::cli::Dotrain),
 }
 
 #[tokio::main]

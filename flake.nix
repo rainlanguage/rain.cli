@@ -9,7 +9,27 @@
       let
         pkgs = rainix.pkgs.${system};
       in rec {
-        packages = rainix.packages.${system};
+        packages = {
+          rain = (pkgs.makeRustPlatform{
+            rustc = rainix.rust-toolchain.${system};
+            cargo = rainix.rust-toolchain.${system};
+          }).buildRustPackage {
+            src = ./.;
+            doCheck = false;
+            name = "rain";
+            cargoLock.lockFile = ./Cargo.lock;
+            # allows for git deps to be resolved without the need to specify their outputHash
+            cargoLock.allowBuiltinFetchGit = true;
+            buildPhase = ''
+              cargo build --release --bin rain
+            '';
+            installPhase = ''
+              mkdir -p $out/bin
+              cp target/release/rain $out/bin/
+            '';
+            nativeBuildInputs = rainix.rust-build-inputs.${system};
+          };
+        } // rainix.packages.${system};
 
         devShells = rainix.devShells.${system};
       }

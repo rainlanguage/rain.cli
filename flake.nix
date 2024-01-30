@@ -31,6 +31,8 @@
           };
         } // rainix.packages.${system};
 
+        defaultPackage = packages.rain;
+
         devShells = rainix.devShells.${system};
       }
     );

@@ -27,6 +27,7 @@
               mkdir -p $out/bin
               cp target/release/rain $out/bin/
             '';
+            buildInputs = rainix.rust-build-inputs.${system};
             nativeBuildInputs = rainix.rust-build-inputs.${system};
           };
         } // rainix.packages.${system};

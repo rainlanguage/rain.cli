@@ -1,9 +1,6 @@
 use anyhow::Result;
 use clap::command;
 use clap::{Parser, Subcommand};
-use dotrain;
-use rain_cli_meta;
-use rain_cli_ob;
 
 /// Rain CLI.
 /// Base struct just wraps subcommands so that we can dispatch to dependencies.

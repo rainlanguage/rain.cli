@@ -813,9 +813,9 @@ dependencies = [
 
 [[package]]
 name = "dotrain"
-version = "6.0.1-alpha.2"
+version = "6.0.1-alpha.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4f697865fb8056ec9a3050b6514c6beea6fe5ff7b3c56801222de2f517993100"
+checksum = "419e5069c77d2880f2ba74a0acee434e6bf678cd9a5f3859db0a58f7062186f1"
 dependencies = [
  "alloy-json-abi",
  "alloy-primitives 0.5.4",
@@ -2033,6 +2033,20 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dc33ff2d4973d518d823d61aa239014831e521c75da58e3df4840d3f47749d09"
 
 [[package]]
+name = "rain-cli"
+version = "0.9.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "dotrain",
+ "rain_cli_meta",
+ "rain_cli_ob",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "rain-metadata"
 version = "0.0.2-alpha.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2061,20 +2075,6 @@ dependencies = [
  "tracing",
  "tracing-subscriber",
  "validator",
-]
-
-[[package]]
-name = "rain_cli"
-version = "0.9.0"
-dependencies = [
- "anyhow",
- "clap",
- "dotrain",
- "rain_cli_meta",
- "rain_cli_ob",
- "tokio",
- "tracing",
- "tracing-subscriber",
 ]
 
 [[package]]

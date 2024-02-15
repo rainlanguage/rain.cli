@@ -649,13 +649,11 @@ dependencies = [
 
 [[package]]
 name = "dotrain"
-version = "6.0.1-alpha.5"
+version = "6.0.1-alpha.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c43cad279dd565e95145cd73dc7233d67dba6661d863d0ec492b6dd691a151de"
+checksum = "1ae40642edbc935c4b987474918f80984c0d2450b8fb8478370fa0dd7187e1d2"
 dependencies = [
- "alloy-json-abi",
  "alloy-primitives",
- "alloy-sol-types",
  "anyhow",
  "async-recursion",
  "clap",
@@ -670,7 +668,6 @@ dependencies = [
  "serde_json",
  "serde_repr",
  "tokio",
- "topo_sort",
  "tracing",
  "tracing-subscriber",
 ]
@@ -2442,12 +2439,6 @@ dependencies = [
  "toml_datetime",
  "winnow",
 ]
-
-[[package]]
-name = "topo_sort"
-version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "156552d3c80df430aaac98c605a4e0eb7da8d06029cce2d40b4a6b095a34b37e"
 
 [[package]]
 name = "tower-service"

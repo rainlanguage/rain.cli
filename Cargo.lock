@@ -649,9 +649,9 @@ dependencies = [
 
 [[package]]
 name = "dotrain"
-version = "6.0.1-alpha.6"
+version = "6.0.1-alpha.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1ae40642edbc935c4b987474918f80984c0d2450b8fb8478370fa0dd7187e1d2"
+checksum = "7649d39a901ae6731bf2f91cbd3c2619fecee8215c4c57766ec63c1247842a28"
 dependencies = [
  "alloy-primitives",
  "anyhow",

@@ -1682,7 +1682,7 @@ dependencies = [
 
 [[package]]
 name = "rain_cli"
-version = "0.9.1-alpha.2"
+version = "0.9.1-alpha.3"
 dependencies = [
  "anyhow",
  "clap",

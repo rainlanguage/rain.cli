@@ -22,9 +22,16 @@
             cargoLock.allowBuiltinFetchGit = true;
             # submodules = true;
             buildPhase = ''
+              set -euxo pipefail
+              echo ${pkgs.libusb}
+              echo $PKG_CONFIG_PATH
+              pkg-config --list-all
+              pkg-config libusb-1.0 --libs
+
               cd lib/rain.metadata
               RUST_LOG=trace forge build --force --cache-path "`pwd`/cache" --out "`pwd`/out" --root `pwd` --offline --use ${pkgs.solc_0_8_19}/bin/solc-0.8.19
-              cargo build --release --bin rain
+              cd -
+              LIBUSB_STATIC=0 cargo build --release --bin rain
             '';
             installPhase = ''
               mkdir -p $out/bin

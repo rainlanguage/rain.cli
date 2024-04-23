@@ -1,7 +1,7 @@
 {
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    rainix.url = "github:rainprotocol/rainix";
+    rainix.url = "github:rainprotocol/rainix/5e3c2a275c2a2556eb8564a3607ba14ce990105b";
   };
 
   outputs = { self, flake-utils, rainix }:
@@ -22,22 +22,8 @@
             cargoLock.allowBuiltinFetchGit = true;
             # submodules = true;
             buildPhase = ''
-              # mkdir -p $out/lib
-              # cp -r lib $out/lib
-              # ls -la
-              # ls -la lib
-              # cd lib/rain.metadata
-              # mkdir -p $out/cache
-              # mkdir -p $out/out
-              set -euxo pipefail
-              # echo "$src"
-              # ls -la "$src"
-              # ls -la "$src/lib/rain.metadata"
-              # whoami
-              # sudo mkdir -p "$src/out"
-              # forge build --force --root "$src/lib/rain.metadata" --out $src/out
-              # cd -
-              echo $CARGO_TARGET_DIR
+              cd lib/rain.metadata
+              RUST_LOG=trace forge build --force --cache-path "`pwd`/cache" --out "`pwd`/out" --root `pwd` --offline --use ${pkgs.solc_0_8_19}/bin/solc-0.8.19
               cargo build --release --bin rain
             '';
             installPhase = ''

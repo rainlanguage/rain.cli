@@ -1,7 +1,7 @@
 {
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    rainix.url = "github:rainprotocol/rainix/5e3c2a275c2a2556eb8564a3607ba14ce990105b";
+    rainix.url = "github:rainprotocol/rainix/6097a125b4ab515e650a6f35d6018744c4ac3bc4";
   };
 
   outputs = { self, flake-utils, rainix }:
@@ -27,6 +27,7 @@
               echo $PKG_CONFIG_PATH
               pkg-config --list-all
               pkg-config libusb-1.0 --libs
+              sw_vers -productVersion
 
               cd lib/rain.metadata
               RUST_LOG=trace forge build --force --cache-path "`pwd`/cache" --out "`pwd`/out" --root `pwd` --offline --use ${pkgs.solc_0_8_19}/bin/solc-0.8.19

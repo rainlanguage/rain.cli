@@ -17,7 +17,7 @@ enum Namespace {
     #[command(subcommand)]
     Orderbook(rain_cli_ob::cli::Orderbook),
     #[command(subcommand)]
-    Meta(rain_cli_meta::cli::Meta),
+    Meta(rain_metadata::cli::Meta),
     #[command(subcommand)]
     Dotrain(dotrain::cli::Dotrain),
 }
@@ -29,7 +29,7 @@ async fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.namespace {
         Namespace::Orderbook(orderbook) => rain_cli_ob::cli::dispatch(orderbook).await,
-        Namespace::Meta(meta) => rain_cli_meta::cli::dispatch(meta),
+        Namespace::Meta(meta) => rain_metadata::cli::dispatch(meta),
         Namespace::Dotrain(dotrain) => dotrain::cli::dispatch(dotrain).await,
     }
 }

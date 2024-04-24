@@ -38,26 +38,3 @@ other binary.
 ```
 nix profile install github:rainprotocol/rain.cli
 ```
-
-### Cargo
-
-Rain CLI is written in Rust so can be installed with `cargo` like any other Rust
-binary.
-
-From this repo at any commit
-
-```
-cargo install --path .
-```
-
-From crates.io
-
-```
-cargo install rain_cli
-```
-
-This approach will compile and save the `rain` binary at `~/.cargo/bin` which
-means:
-
-- You need to make sure that `~/.cargo/bin` is on your `$PATH`
-- You are responsible for tracking versions and/or uninstalling via cargo ongoing

@@ -9,7 +9,20 @@
       let
         pkgs = rainix.pkgs.${system};
       in rec {
-        packages = {
+        packages = rec {
+
+          rain-metadata-repo = pkgs.stdenv.mkDerivation {
+            name = "rain-metadata-repo";
+            src = pkgs.fetchgit {
+              url = "https://github.com/rainlanguage/rain.metadata";
+              hash = "sha256-/iWuobr7lQRd4RrJVCjZJsBKxk4FN6ZZXABpypLrJTM=";
+            };
+            installPhase = ''
+              mkdir -p $out
+              cp -r . $out
+            '';
+          };
+
           rain = (pkgs.makeRustPlatform{
             rustc = rainix.rust-toolchain.${system};
             cargo = rainix.rust-toolchain.${system};
@@ -22,7 +35,8 @@
             cargoLock.allowBuiltinFetchGit = true;
             # submodules = true;
             buildPhase = ''
-              ls -la
+              mkdir -p lib/rain.metadata
+              cp -r ${rain-metadata-repo}/* lib/rain.metadata
               cd lib/rain.metadata
               RUST_LOG=trace forge build --force --cache-path "`pwd`/cache" --out "`pwd`/out" --root `pwd` --offline --use ${pkgs.solc_0_8_19}/bin/solc-0.8.19
               cd -

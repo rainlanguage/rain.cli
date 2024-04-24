@@ -22,6 +22,7 @@
             cargoLock.allowBuiltinFetchGit = true;
             # submodules = true;
             buildPhase = ''
+              ls -la
               cd lib/rain.metadata
               RUST_LOG=trace forge build --force --cache-path "`pwd`/cache" --out "`pwd`/out" --root `pwd` --offline --use ${pkgs.solc_0_8_19}/bin/solc-0.8.19
               cd -

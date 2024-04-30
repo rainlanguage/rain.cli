@@ -1,7 +1,7 @@
 {
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    rainix.url = "github:rainprotocol/rainix/6097a125b4ab515e650a6f35d6018744c4ac3bc4";
+    rainix.url = "github:rainprotocol/rainix";
   };
 
   outputs = { self, flake-utils, rainix }:
@@ -15,7 +15,8 @@
             name = "rain-metadata-repo";
             src = pkgs.fetchgit {
               url = "https://github.com/rainlanguage/rain.metadata";
-              hash = "sha256-/iWuobr7lQRd4RrJVCjZJsBKxk4FN6ZZXABpypLrJTM=";
+              rev = "259f33de2c5a6a76fdc8da58468c284d37962e7d";
+              hash = "sha256-vckSiXFi3dtISoMSLAvul/4cWJOdXDT2kO0B7KOUWdc=";
             };
             installPhase = ''
               mkdir -p $out

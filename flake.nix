@@ -14,7 +14,8 @@
           rain-metadata-repo = pkgs.stdenv.mkDerivation {
             name = "rain-metadata-repo";
             src = pkgs.fetchgit {
-              url = "https://github.com/rainlanguage/rain.metadata/259f33de2c5a6a76fdc8da58468c284d37962e7d";
+              url = "https://github.com/rainlanguage/rain.metadata";
+              rev = "259f33de2c5a6a76fdc8da58468c284d37962e7d";
               hash = "sha256-/iWuobr7lQRd4RrJVCjZJsBKxk4FN6ZZXABpypLrJTE=";
             };
             installPhase = ''

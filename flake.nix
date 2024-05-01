@@ -27,7 +27,6 @@
           build-cargo-lock = rainix.mkTask.${system} {
             name = "build-cargo-lock";
             body = ''
-              echo $PWD
               rm -rf ./lib/rain.metadata
               mkdir -p ./lib/rain.metadata
               cp --no-preserve=mode,ownership -r ${rain-metadata-repo}/* ./lib/rain.metadata

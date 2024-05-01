@@ -16,7 +16,7 @@
             src = pkgs.fetchgit {
               url = "https://github.com/rainlanguage/rain.metadata";
               rev = "b235fb2d4e4d22e3adda4f316f5a7f21164451fb";
-              hash = "";
+              hash = "sha256-LNBoLu4/TPF++17F6STjiJSpEYlfF2B7dbRhIpcT9EA=";
             };
             installPhase = ''
               mkdir -p $out

@@ -1,5 +1,4 @@
 use anyhow::Result;
-use clap::command;
 use clap::{Parser, Subcommand};
 
 /// Rain CLI.
@@ -29,7 +28,7 @@ async fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.namespace {
         Namespace::Orderbook(orderbook) => rain_cli_ob::cli::dispatch(orderbook).await,
-        Namespace::Meta(meta) => rain_metadata::cli::dispatch(meta),
+        Namespace::Meta(meta) => rain_metadata::cli::dispatch(meta).await,
         Namespace::Dotrain(dotrain) => dotrain::cli::dispatch(dotrain).await,
     }
 }

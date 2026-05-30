@@ -10,8 +10,9 @@ Doesn't provide any of its own functionality.
 
 ### Nix flakes
 
-If you have https://nixos.org/ installed and nix flakes enabled https://nixos.wiki/wiki/Flakes
-then you can run the Rain CLI straight from github.
+If you have https://nixos.org/ installed and nix flakes enabled
+https://nixos.wiki/wiki/Flakes then you can run the Rain CLI straight from
+github.
 
 ```
 nix shell github:rainprotocol/rain.cli -c rain
@@ -23,8 +24,8 @@ This will track the default branch (main) and can be aliased e.g.
 alias rain="nix shell github:rainprotocol/rain.cli -c rain"
 ```
 
-If you add this alias to your ~/.bashrc or ~/.zshrc file, etc. then you'll always
-have fresh `rain`.
+If you add this alias to your ~/.bashrc or ~/.zshrc file, etc. then you'll
+always have fresh `rain`.
 
 You can also pin it to any git revision like
 

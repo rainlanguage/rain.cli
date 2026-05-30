@@ -1,6 +1,6 @@
 [package]
 name = "rain_cli"
-version = "0.9.1-alpha.4"
+version = "0.9.1-alpha.5"
 edition = "2021"
 license-file = "LICENSE"
 description = "Aggregated binary across all native Rain tooling."

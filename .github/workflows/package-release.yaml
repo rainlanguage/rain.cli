@@ -1,0 +1,14 @@
+name: Package Release
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release:
+    # Bump + publish rain_cli to crates.io on every push to main, preserving
+    # the existing alpha-pre-release cadence.
+    uses: rainlanguage/rainix/.github/workflows/rainix-autopublish.yaml@main
+    with:
+      crate: rain_cli
+      level: alpha
+    secrets: inherit

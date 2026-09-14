@@ -26,8 +26,15 @@
                 src = ./.;
                 doCheck = false;
                 name = "rain";
-                cargoLock.lockFile = ./Cargo.lock;
-                cargoLock.allowBuiltinFetchGit = true;
+                # Vendored through fetchCargoVendor rather than cargoLock: cargoLock
+                # fetches each crate from crates.io/api, which answers 403 to the
+                # curl User-Agent nix sends, so any store miss fails the build.
+                # fetchCargoVendor pulls from the static.crates.io CDN.
+                cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+                  src = ./.;
+                  name = "rain";
+                  hash = "sha256-TrZzMmDnC07lhfjKdKfwNtrzbeRcxKewqTqmiZD2fic=";
+                };
                 buildInputs = rainix.rust-build-inputs.${system};
                 nativeBuildInputs = rainix.rust-build-inputs.${system};
               };

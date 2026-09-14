@@ -35,7 +35,17 @@
                 cargoDeps =
                   (pkgs.callPackage (pkgs.path + "/pkgs/build-support/rust/import-cargo-lock.nix") {
                     cargo = rainix.rust-toolchain.${system};
-                    fetchurl = args: pkgs.fetchurl (args // { curlOptsList = (args.curlOptsList or [ ]) ++ [ "--user-agent" "Nixpkgs" ]; });
+                    fetchurl =
+                      args:
+                      pkgs.fetchurl (
+                        args
+                        // {
+                          curlOptsList = (args.curlOptsList or [ ]) ++ [
+                            "--user-agent"
+                            "Nixpkgs"
+                          ];
+                        }
+                      );
                   })
                     {
                       lockFile = ./Cargo.lock;

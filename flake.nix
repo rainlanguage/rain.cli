@@ -26,15 +26,21 @@
                 src = ./.;
                 doCheck = false;
                 name = "rain";
-                # Vendored through fetchCargoVendor rather than cargoLock: cargoLock
-                # fetches each crate from crates.io/api, which answers 403 to the
-                # curl User-Agent nix sends, so any store miss fails the build.
-                # fetchCargoVendor pulls from the static.crates.io CDN.
-                cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
-                  src = ./.;
-                  name = "rain";
-                  hash = "sha256-TrZzMmDnC07lhfjKdKfwNtrzbeRcxKewqTqmiZD2fic=";
-                };
+                # importCargoLock fetches each crate from crates.io/api, which
+                # answers 403 to any User-Agent starting with curl/, and that is
+                # what nixpkgs fetchurl sends. Hand it a fetchurl that overrides
+                # the agent; the fixed-output hashes are unchanged so cache hits
+                # are too. Not fetchCargoVendor: its hash covers Cargo.lock, so the
+                # release version bump would break every build until re-hashed.
+                cargoDeps =
+                  (pkgs.callPackage (pkgs.path + "/pkgs/build-support/rust/import-cargo-lock.nix") {
+                    cargo = rainix.rust-toolchain.${system};
+                    fetchurl = args: pkgs.fetchurl (args // { curlOptsList = (args.curlOptsList or [ ]) ++ [ "--user-agent" "Nixpkgs" ]; });
+                  })
+                    {
+                      lockFile = ./Cargo.lock;
+                      allowBuiltinFetchGit = true;
+                    };
                 buildInputs = rainix.rust-build-inputs.${system};
                 nativeBuildInputs = rainix.rust-build-inputs.${system};
               };
